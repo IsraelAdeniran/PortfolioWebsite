@@ -12,28 +12,33 @@ body {
 .navbar {
     width: 100%;
     background: rgba(0, 0, 0, 0.7);
-    padding: 1rem 0;
+    padding: 1rem 2rem;
     position: fixed;
     top: 0;
     z-index: 1000;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
 }
 
+/* Container for navbar content */
 .navbar .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 1.5rem;
+    width: 100%;
 }
 
+/* Logo */
 .logo {
     color: #fff;
-    font-size: 1.8rem;
-    font-weight: 600;
+    font-size: 1.5rem;
+    font-weight: 700;
 }
 
+/* Navigation links */
 .navbar ul {
     list-style: none;
     display: flex;
@@ -41,6 +46,7 @@ body {
     margin: 0;
 }
 
+/* Navigation links styling */
 .navbar ul li a {
     color: #fff;
     text-decoration: none;
@@ -55,56 +61,84 @@ body {
 /* Hero Section */
 .hero-section {
     background: linear-gradient(135deg, #3a6073, #16222a);
-    height: 100vh;
+    height: calc(100vh - 3.5rem);
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: left;
     color: white;
     position: relative;
     overflow: hidden;
-    padding: 0 1.5rem;
+    padding: 0 2rem;
+    padding-top: 3.5rem;
 }
 
+/* Hero Content */
 .hero-content {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
     max-width: 600px;
+    text-align: left;
 }
 
+/* Hero Title */
 .hero-title {
-    font-size: 3.5rem;
+    font-size: 2.4rem;
     font-weight: 700;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
     color: #f8f3f4;
-    animation: fadeIn 2s ease-in-out;
+    animation: fadeInTitle 2s ease-out;
 }
 
 .hero-title span {
     color: #00adb5;
 }
 
+/* Hero Subtitle */
 .hero-subtitle {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     color: #ffffffc9;
-    margin-bottom: 2rem;
-    animation: slideUp 2s ease-in-out;
+    margin-bottom: 1rem;
+    animation: fadeInSubtitle 2s ease-out;
 }
 
+/* Hero Links */
 .hero-links {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
-    margin-top: 2rem;
 }
 
+/* Keyframes for Animations */
+@keyframes fadeInTitle {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInSubtitle {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* CV Button */
 .cv-btn {
     background-color: #00adb5;
     color: white;
-    padding: 0.7rem 2rem;
+    padding: 0.8rem 2.5rem;
     border-radius: 50px;
     text-decoration: none;
     transition: background-color 0.3s ease, transform 0.3s ease;
@@ -116,14 +150,15 @@ body {
     transform: translateY(-5px);
 }
 
+/* Social Links */
 .social-links {
     display: flex;
     gap: 1rem;
 }
 
 .social-link img {
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     transition: opacity 0.3s ease;
 }
 
@@ -133,7 +168,7 @@ body {
 
 /* Section Styles */
 section {
-    padding: 6rem 1.5rem;
+    padding: 6rem 2rem;
 }
 
 .container {
@@ -143,7 +178,7 @@ section {
 
 /* Section Title */
 .section-title {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     color: #00adb5;
     margin-bottom: 2rem;
     position: relative;
@@ -160,7 +195,7 @@ section {
 
 /* Section Text */
 .section-text {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     color: #dcdde1;
     line-height: 1.8;
 }
@@ -169,7 +204,7 @@ section {
 .skills-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 1.5rem;
     justify-content: center;
 }
 
@@ -182,8 +217,8 @@ section {
     transition: transform 0.3s ease, background-color 0.3s ease;
     cursor: pointer;
     text-align: center;
-    width: 180px;
-    height: 230px;
+    width: 200px;
+    height: 240px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -191,13 +226,13 @@ section {
 }
 
 .skill-card img {
-    width: 120px;
-    height: 120px;
+    width: 130px;
+    height: 130px;
     margin-bottom: 1rem;
 }
 
 .skill-card span {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
 }
 
 .skill-card:hover {
@@ -206,9 +241,8 @@ section {
 }
 
 /* Projects Section */
-/* Projects Section */
 .projects-section {
-    padding: 6rem 1.5rem;
+    padding: 6rem 2rem;
     background: #1a1a2e;
 }
 
@@ -249,12 +283,12 @@ section {
 
 .project-info h3 {
     margin-top: 0;
-    font-size: 1.8rem;
+    font-size: 2rem;
     color: #00adb5;
 }
 
 .project-info p {
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: #dcdde1;
     line-height: 1.6;
 }
@@ -296,5 +330,5 @@ form button:hover {
     background: #16222a;
     color: white;
     text-align: center;
-    padding: 1.5rem 0;
+    padding: 1.5rem 2rem;
 }

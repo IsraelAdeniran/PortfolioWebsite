@@ -1,12 +1,48 @@
+// Typing Effect for Hero Title and Subtitle with Callback
+function typingEffect(element, text, speed, callback) {
+    let index = 0;
+    function type() {
+        if (index < text.length) {
+            element.innerHTML += text.charAt(index);
+            index++;
+            setTimeout(type, speed);
+        } else if (callback) {
+            callback(); // Call the callback function after typing is complete
+        }
+    }
+    type();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const title = document.querySelector('.hero-title');
+    const subtitle = document.querySelector('.hero-subtitle');
+
+    if (title) {
+        // Start typing effect for the title
+        typingEffect(title, "Hi, I'm Adefolajuwon Adeniran", 100, () => {
+            // Start typing effect for the subtitle after the title is done
+            if (subtitle) {
+                subtitle.classList.add('animate-subtitle'); // Add the animation class
+                typingEffect(subtitle, "A Results-Oriented Software Engineer", 100);
+            }
+        });
+        // Add the animation class for the title
+        title.classList.add('animate-title');
+    }
+});
+
 // Smooth scrolling for anchor links
 document.querySelectorAll('nav ul li a').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
-        const targetSection = document.querySelector(this.getAttribute('href'));
+        const targetId = this.getAttribute('href').substring(1);
+        const targetSection = document.getElementById(targetId);
 
-        targetSection.scrollIntoView({
-            behavior: 'smooth'
-        });
+        if (targetSection) {
+            targetSection.scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
     });
 });
 
@@ -19,34 +55,15 @@ const options = {
 
 const observer = new IntersectionObserver(function(entries, observer) {
     entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('animate');
-        observer.unobserve(entry.target);
+        if (entry.isIntersecting) {
+            entry.target.classList.add('animate');
+            observer.unobserve(entry.target);
+        }
     });
 }, options);
 
 sections.forEach(section => {
     observer.observe(section);
-});
-
-// Typing Effect for Hero Subtitle
-function typingEffect(element, text, speed) {
-    let index = 0;
-    function type() {
-        if (index < text.length) {
-            element.innerHTML += text.charAt(index);
-            index++;
-            setTimeout(type, speed);
-        }
-    }
-    type();
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    const subtitle = document.querySelector('.hero-subtitle');
-    if (subtitle) {
-        typingEffect(subtitle, "Results-Oriented Software Engineer", 100);
-    }
 });
 
 // Dynamic Skill Card Hover Effect
@@ -68,27 +85,29 @@ skillCards.forEach(card => {
 
 // Contact Form Validation
 const form = document.querySelector('form');
-form.addEventListener('submit', function(e) {
-    e.preventDefault();
+if (form) {
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
 
-    const name = form.querySelector('input[type="text"]');
-    const email = form.querySelector('input[type="email"]');
-    const message = form.querySelector('textarea');
+        const name = form.querySelector('input[type="text"]');
+        const email = form.querySelector('input[type="email"]');
+        const message = form.querySelector('textarea');
 
-    if (!name.value || !email.value || !message.value) {
-        alert('Please fill in all fields');
-        return;
-    }
+        if (!name.value || !email.value || !message.value) {
+            alert('Please fill in all fields');
+            return;
+        }
 
-    if (!validateEmail(email.value)) {
-        alert('Please enter a valid email address');
-        return;
-    }
+        if (!validateEmail(email.value)) {
+            alert('Please enter a valid email address');
+            return;
+        }
 
-    // If validation passes
-    alert('Thank you for your message!');
-    form.reset();
-});
+        // If validation passes
+        alert('Thank you for your message!');
+        form.reset();
+    });
+}
 
 // Email Validation Function
 function validateEmail(email) {
